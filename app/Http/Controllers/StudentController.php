@@ -146,4 +146,22 @@ class StudentController extends Controller {
 //        dd($students);
     }
 
+    //聚合函数
+    function juhe(){
+//        $num=DB::table("student")->count();
+//        var_dump($num);
+
+//        $max=DB::table("student")->max("id");
+//        var_dump($max);
+
+//        $min=DB::table("student")->min("id");
+//        var_dump($min);
+
+//        $avg=DB::table("student")->avg("age");
+//        var_dump($avg);
+
+        $sum=DB::table("student")->sum("age");
+        var_dump($sum);
+    }
+
 }

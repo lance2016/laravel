@@ -37,6 +37,8 @@ Route::get("update1",["uses"=>"StudentController@update1"]);
 Route::get("delete1",["uses"=>"StudentController@delete1"]);
 Route::get("select1",["uses"=>"StudentController@select1"]);
 Route::get("query1",["uses"=>"StudentController@query1"]);
+Route::get("juhe",["uses"=>"StudentController@juhe"]);
+
 //基础路由
 /*
 Route::get('basic1',function(){

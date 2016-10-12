@@ -29,7 +29,14 @@ Route::get('/', function () {
 Route::get("info/{name?}",["uses"=>"MyController@info"]);
 
 
+//数据库操作路由
+Route::get("test1",["uses"=>"StudentController@test1"]);
 
+Route::get("insert1",["uses"=>"StudentController@insert1"]);
+Route::get("update1",["uses"=>"StudentController@update1"]);
+Route::get("delete1",["uses"=>"StudentController@delete1"]);
+Route::get("select1",["uses"=>"StudentController@select1"]);
+Route::get("query1",["uses"=>"StudentController@query1"]);
 //基础路由
 /*
 Route::get('basic1',function(){

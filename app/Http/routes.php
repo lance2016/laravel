@@ -42,7 +42,7 @@ Route::get("juhe",["uses"=>"StudentController@juhe"]);
 
 //orm
 Route::get("orm1",["uses"=>"StudentController@orm1"]);
-
+Route::get("orm2",["uses"=>"StudentController@orm2"]);
 //基础路由
 /*
 Route::get('basic1',function(){

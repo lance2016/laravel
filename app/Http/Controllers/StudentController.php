@@ -204,4 +204,31 @@ class StudentController extends Controller {
 //        echo $min."<br/>";
     }
 
+    function orm2(){
+//        使用模型新增数据
+//            $student=new Student();
+//        $student->name="tom";
+//        $student->sex=2;
+//        $bool=$student->save();
+//        控制时间戳
+//        $student=Student::find(51);
+//        echo date("Y-m-d H:i:s",$student->created_at);
+
+//        使用模型的create新增数据
+//       $student= Student::create(
+//            ["name"=>"jerry"]
+//        );
+//        dd($student);
+
+//        $student=Student::firstOrCreate(
+//            ["id"=>123]
+//        );
+//        $student=Student::firstOrNew(
+//            ["age"=>123]
+//        );
+//        $bool=$student->save();
+//        dd($bool);
+
+    }
+
 }

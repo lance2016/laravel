@@ -176,7 +176,7 @@ class StudentController extends Controller {
 //        $studnet=Student::find(3);
 //        dd($studnet);
 
-        
+
 //        findOrFail()
 //        $studnet=Student::findOrFail(1);
 //        dd($studnet);

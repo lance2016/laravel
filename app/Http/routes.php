@@ -39,6 +39,10 @@ Route::get("select1",["uses"=>"StudentController@select1"]);
 Route::get("query1",["uses"=>"StudentController@query1"]);
 Route::get("juhe",["uses"=>"StudentController@juhe"]);
 
+
+//orm
+Route::get("orm1",["uses"=>"StudentController@orm1"]);
+
 //基础路由
 /*
 Route::get('basic1',function(){

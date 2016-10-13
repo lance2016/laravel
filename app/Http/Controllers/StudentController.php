@@ -6,6 +6,7 @@
  * Time: 15:45
  */
 namespace App\Http\Controllers;
+use App\Student;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller {
@@ -162,6 +163,45 @@ class StudentController extends Controller {
 
         $sum=DB::table("student")->sum("age");
         var_dump($sum);
+    }
+
+
+
+    function orm1(){
+        //all();
+//        $students=Student::all();
+//        dd($students);
+
+//        find()
+//        $studnet=Student::find(3);
+//        dd($studnet);
+
+//        findOrFail()
+//        $studnet=Student::findOrFail(1);
+//        dd($studnet);
+
+//        get()
+//        $studnet=Student::get();
+//       dd($studnet);
+
+//        fitst()
+//        $studnet=Student::where("age",">=","3")
+//            ->orderBy("id","desc")
+//            ->first();
+//        dd($studnet);
+
+//        chunk()
+//        Student::chunk(2,function ($students){
+//            dd($students);
+//        });
+
+        //聚合函数
+//        $num=Student::count();
+//        echo $num."<br/>";
+//        $max=Student::where("id",">","3")->max("age");
+//        echo $max."<br/>";
+//        $min=Student::where("id",">","3")->min("age");
+//        echo $min."<br/>";
     }
 
 }

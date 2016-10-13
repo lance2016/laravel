@@ -167,6 +167,8 @@ class StudentController extends Controller {
 
 
 
+
+
     function orm1(){
         //all();
 //        $students=Student::all();

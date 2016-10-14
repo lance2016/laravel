@@ -39,10 +39,16 @@ Route::get("select1",["uses"=>"StudentController@select1"]);
 Route::get("query1",["uses"=>"StudentController@query1"]);
 Route::get("juhe",["uses"=>"StudentController@juhe"]);
 
-
+//视图
+Route::get("section1",["uses"=>"StudentController@section1"]);
 //orm
 Route::get("orm1",["uses"=>"StudentController@orm1"]);
 Route::get("orm2",["uses"=>"StudentController@orm2"]);
+Route::get("orm3",["uses"=>"StudentController@orm3"]);
+Route::get("orm4",["uses"=>"StudentController@orm4"]);
+
+//url
+Route::get("url",["as"=>"url","uses"=>"StudentController@urlTest"]);
 //基础路由
 /*
 Route::get('basic1',function(){

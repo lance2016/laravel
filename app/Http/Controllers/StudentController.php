@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers;
 use App\Student;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller {
@@ -170,6 +171,7 @@ class StudentController extends Controller {
 
 
     function orm1(){
+//        使用模型查询数据
         //all();
 //        $students=Student::all();
 //        dd($students);
@@ -234,4 +236,47 @@ class StudentController extends Controller {
 
     }
 
+    function orm3(){
+//        模型更新数据
+//        $student=Student::find(3);
+//        $student->name="Lucy";
+//        $bool=$student->save();
+//        var_dump($bool);
+
+//        $num=Student::where("id",">","10")->update(
+//            ["age"=>41,"sex"=>1]);
+//        var_dump($num);
+    }
+
+    function orm4(){
+//        通过模型删除
+//        $student=Student::find(3);
+//        $bool=$student->delete();
+//        var_dump($bool);
+
+//        通过主键删除
+//        $num=Student::destroy(21);
+//        $num=Student::destroy(22,23);
+//        $num=Student::destroy([53,54]);
+//        var_dump($num);
+
+//        删除指定条件
+//        $num=Student::where("id","<=","50")->delete();
+//        var_dump($num);
+    }
+    function section1(){
+        $students=Student::get();
+        $name="Bob";
+        $arr=["Anna","Bob"];
+        return View("student/section1",[
+            "name"=>$name,
+            "arr"=>$arr,
+            "students"=>$students
+        ]);
+    }
+
+
+    function urlTest(){
+    return "urlTest";
+}
 }

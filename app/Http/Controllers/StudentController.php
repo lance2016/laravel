@@ -8,7 +8,9 @@
 namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller {
     public function test1(){
@@ -264,7 +266,7 @@ class StudentController extends Controller {
 //        $num=Student::where("id","<=","50")->delete();
 //        var_dump($num);
     }
-    function section1(){
+    public function section1(){
         $students=Student::get();
         $name="Bob";
         $arr=["Anna","Bob"];
@@ -276,7 +278,119 @@ class StudentController extends Controller {
     }
 
 
-    function urlTest(){
+    public function urlTest(){
     return "urlTest";
 }
+
+    public function request1(Request $request)
+    {
+//取值
+//        echo $request->input("name");
+////        默认值
+//        echo $request->input("sex","性别未知");
+//        if($request->has("id")){
+//            echo "id:".$request->input("id");
+//        }
+//        else
+//            echo "没有id";
+//
+//        dd($request->all());
+////判断请求类型
+//        echo $request->method();
+//        echo $request->isMethod("GET")?"is Get":"not get";
+//
+//        $res=$request->ajax();
+//        var_dump($res);
+////路由格式
+//        echo $request->is("request1");
+////当前url
+//        echo $request->url();
+    }
+
+    public function session1(Request $request){
+//        http request session
+//        $request->session()->put("key1","value1");
+//        dd($request->session()->get('key1'));
+
+//        session()
+//        session()->put("key2","value2");
+//        echo session()->get("key2");
+
+//        Session
+//        Session::put("key3","value3");
+//        echo Session::get("key3");
+
+//        不存在就取默认值
+//        echo Session::get("key4","default");
+
+//        Session::put(["key4"=>"value4","key5"=>"value5"]);
+//        echo Session::get("key5");
+
+//        存放数组
+//        Session::push("students","name1");
+//        Session::push("students","name2");
+//        取出所有
+//        $res= Session::all();
+//判断session是否存在
+//        if(Session::has("key1"))
+//            echo "有";
+//        else
+//            echo "没有";
+        //    删除session
+//Session::forget("key1");
+//        删除所有session
+//Session::flush();
+//        暂存数据首次访问存在
+//        Session::flash("key-flash","num");
+    }
+
+
+
+    public function session2(Request $request){
+//
+//
+//
+   return Session::get("message","暂无信息");
+}
+
+
+public function response1(){
+//    响应json
+//    $data=[
+//        "id"=>"123",
+//        "name"=>"Jerry",
+//        "psw"=>"abc"
+//    ];
+//    return response()->json($data);
+
+//    重定向
+//    return redirect("session2");
+
+//    return redirect("session2")->with(["message"=>"我是快闪数据"]);
+
+//    return redirect()->action("StudentController@session2")->with(["message"=>"我是快闪数据"]);
+
+//    return redirect()->route("s1")->with(["message"=>"我是快闪数据"]);
+
+    return redirect()->back()->with(["message"=>"我是快闪数据"]);
+
+}
+
+    function activity1(){
+        return "活动快要开始了，敬请期待";
+    }
+
+    function activity2(){
+        return "活动已经开始了，欢迎踊跃参加";
+    }
+
+    function activity3(){
+        return "活动已经结束了";
+    }
+
+
+
+
+
+
 }

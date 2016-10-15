@@ -49,6 +49,31 @@ Route::get("orm4",["uses"=>"StudentController@orm4"]);
 
 //url
 Route::get("url",["as"=>"url","uses"=>"StudentController@urlTest"]);
+
+
+//request
+Route::get("request1",["uses"=>"StudentController@request1"]);
+
+//session
+
+Route::group(['middleware'=>['web']],function(){
+    Route::get("session1",["uses"=>"StudentController@session1"]);
+    Route::get("session2",[
+        "as"=>"s1",
+        "uses"=>"StudentController@session2"]);
+    Route::get("response1",["uses"=>"StudentController@response1"]);
+});
+
+//response
+
+//Middleware
+//宣传页面
+Route::get("activity1", ["uses" => "StudentController@activity1"]);
+Route::group(['middleware'=>['activity']],function() {
+//活动页面
+    Route::get("activity2", ["uses" => "StudentController@activity2"]);
+    Route::get("activity3", ["uses" => "StudentController@activity3"]);
+});
 //基础路由
 /*
 Route::get('basic1',function(){

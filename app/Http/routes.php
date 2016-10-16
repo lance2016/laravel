@@ -74,6 +74,16 @@ Route::group(['middleware'=>['activity']],function() {
     Route::get("activity2", ["uses" => "StudentController@activity2"]);
     Route::get("activity3", ["uses" => "StudentController@activity3"]);
 });
+
+//demo路由
+Route::group(['middleware' => ['web']], function () {
+    //demo路由
+    Route::any("demo/index", ["uses" => "DemoController@index"]);
+    Route::any("demo/create",["uses"=>"DemoController@create"]);
+    Route::any("demo/save",["uses"=>"DemoController@save"]);
+});
+
+
 //基础路由
 /*
 Route::get('basic1',function(){
@@ -151,7 +161,8 @@ Route::get('view', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
 
+
+Route::group(['middleware' => ['web']], function () {
+
+});

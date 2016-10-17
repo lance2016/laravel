@@ -8,6 +8,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 Class Demo extends Model{
+
 //指定表名
     protected $table= "student";
 //指定主键

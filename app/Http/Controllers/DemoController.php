@@ -19,14 +19,48 @@ class DemoController extends Controller {
     }
 
     public function create(Request $request){
-        if($request->isMethod("POST")){
-            $data=$request->input("Student");
-            if(Demo::create($data)){
-                return redirect("demo/index")->with("success","添加成功");
+        if($request->isMethod("POST")) {
+//            控制器验证
+//            $this->validate($request,[
+//                "Student.name"=>"required|max:20",
+//                "Student.age"=>"integer|required",
+//                "Student.sex"=>"required"
+//            ],[
+//                "required"=>":attribute 为必填项",
+//                "max"=>":attribute 长度不符合要求",
+//                "integer"=>":attribute 必须为整数"
+//            ],[
+//                "Student.name"=>"姓名",
+//                "Student.age"=>"年龄",
+//                "Student.sex"=>"性别"
+//            ]);
+
+//          validator类验证
+           $validator=\Validator::make($request->input(),[
+                "Student.name"=>"required|max:20",
+                "Student.age"=>"integer|required",
+                "Student.sex"=>"required"
+            ],[
+                "required"=>":attribute 为必填项",
+                "max"=>":attribute 长度不符合要求",
+                "integer"=>":attribute 必须为整数"
+            ],[
+                "Student.name"=>"姓名",
+                "Student.age"=>"年龄",
+                "Student.sex"=>"性别"
+            ]);
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
             }
-            else
-                return redirect()->back();
+        $data=$request->input("Student");
+
+            if( Demo::create($data)){
+                    return redirect("demo/index")->with("success","添加成功");
+                }
+                else
+                    return redirect()->back();
         }
+
         return view("demo.create");
     }
 //    保存添加
@@ -43,4 +77,6 @@ class DemoController extends Controller {
         else
             redirect()->back();
     }
+
+
 }

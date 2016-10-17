@@ -25,7 +25,7 @@
                 <th scope="row">{{$student->id}}</th>
                 <td>{{$student->name}}</td>
                 <td>{{$student->age}}</td>
-                <td>{{$student->sex}}</td>
+                <td>{{$student->sex($student->sex)}}</td>
                 <td>{{date("Y-m-d H:i:s",$student->created_at)}}</td>
                 {{--<td>{{date("Y-m-d H:i:s",$student->updated_at)}}</td>--}}
                 <td>

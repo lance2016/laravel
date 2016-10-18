@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Demo;
+use App\Student;
 use Illuminate\Http\Request;
 
 class DemoController extends Controller {
@@ -19,6 +20,8 @@ class DemoController extends Controller {
     }
 
     public function create(Request $request){
+
+        $student=new Demo();
         if($request->isMethod("POST")) {
 //            控制器验证
 //            $this->validate($request,[
@@ -52,6 +55,7 @@ class DemoController extends Controller {
             if($validator->fails()){
                 return redirect()->back()->withErrors($validator)->withInput();
             }
+
         $data=$request->input("Student");
 
             if( Demo::create($data)){
@@ -61,22 +65,86 @@ class DemoController extends Controller {
                     return redirect()->back();
         }
 
-        return view("demo.create");
-    }
-//    保存添加
-    public function save(Request $request){
-            $data=$request->input("Student");
-//            dd($data);
-        $student=new Demo();
-        $student->name=$data['name'];
-        $student->age=$data['age'];
-        $student->sex=$data['sex'];
-        if($student->save()){
-            return redirect("demo/index");
-        }
-        else
-            redirect()->back();
+        return view("demo.create",[
+            "student"=>$student
+        ]);
     }
 
+
+
+    public function update(Request $request,$id){
+        $student=Demo::find($id);
+        if($request->isMethod("POST"))
+        {
+            $validator=\Validator::make($request->input(),[
+                "Student.name"=>"required|max:20",
+                "Student.age"=>"integer|required",
+                "Student.sex"=>"required"
+            ],[
+                "required"=>":attribute 为必填项",
+                "max"=>":attribute 长度不符合要求",
+                "integer"=>":attribute 必须为整数"
+            ],[
+                "Student.name"=>"姓名",
+                "Student.age"=>"年龄",
+                "Student.sex"=>"性别"
+            ]);
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $data=$request->input("Student");
+            $student->name=$data['name'];
+            $student->age=$data['age'];
+            $student->sex=$data['sex'];
+            if($student->save())
+                return redirect("demo/index")->with("success","修改成功-".$id);
+
+        }
+        return view("demo/update",[
+            "student"=>$student
+        ]);
+    }
+    public function detail($id){
+        $student=Demo::find($id);
+        return view("demo.detail",[
+            "student"=>$student
+        ]);
+
+    }
+    public function delete($id){
+        $student=Demo::find($id);
+        if($student->delete()){
+            return redirect("demo/index")->with("success","删除成功-".$id);
+        }
+        else{
+            return redirect("demo/index")->with("success","删除失败-".$id);
+        }
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+//
+////    保存添加
+//    public function save(Request $request){
+//            $data=$request->input("Student");
+////            dd($data);
+//        $student=new Demo();
+//        $student->name=$data['name'];
+//        $student->age=$data['age'];
+//        $student->sex=$data['sex'];
+//        if($student->save()){
+//            return redirect("demo/index");
+//        }
+//        else
+//            redirect()->back();
+//    }

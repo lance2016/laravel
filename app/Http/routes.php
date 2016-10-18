@@ -81,6 +81,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::any("demo/index", ["uses" => "DemoController@index"]);
     Route::any("demo/create",["uses"=>"DemoController@create"]);
     Route::any("demo/save",["uses"=>"DemoController@save"]);
+    Route::any("demo/update/{id}",["uses"=>"DemoController@update"]);
+    Route::any("demo/detail/{id}",["uses"=>"DemoController@detail"]);
+    Route::any("demo/delete/{id}",["uses"=>"DemoController@delete"]);
 });
 
 

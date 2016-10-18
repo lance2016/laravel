@@ -31,7 +31,7 @@
             @section("leftmenu")
             <div class="list-group">
                 <a href="{{url('/demo/index')}}" class="list-group-item
-                {{Request::getPathInfo()=='/demo/index' ? 'active':''}}">学生列表</a>
+                {{Request::getPathInfo()!='/demo/create' ? 'active':''}}">学生列表</a>
                 <a href="{{url('/demo/create')}}" class="list-group-item
                     {{Request::getPathInfo()=="/demo/create" ? "active":''}}">新增学生</a>
             </div>
